@@ -11,6 +11,7 @@ gunicorn = "*"
 django-on-heroku = "*"
 dj-rest-auth = {extras = ["with_social"], version = "*"}
 djangorestframework-simplejwt = "*"
+django-photologue = "*"
 
 [dev-packages]
 black = "*"
