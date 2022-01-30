@@ -13,6 +13,7 @@ class TimeStampedModel(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['-created']
 
 
 class SlugifiedModel(models.Model):
