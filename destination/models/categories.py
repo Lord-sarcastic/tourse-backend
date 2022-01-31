@@ -2,12 +2,15 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
+from photologue.models import Gallery, Photo
+
 
 class Zone(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    cover = models.ImageField(upload_to="zone_covers")
-    slug = models.SlugField(max_length=100, unique=True)
+    cover = models.ForeignKey(Photo, on_delete=models.CASCADE)
+    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=100, unique=True, blank=True)
 
     def __str__(self):
         return self.name
