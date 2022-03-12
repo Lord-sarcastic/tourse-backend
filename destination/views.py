@@ -1,4 +1,5 @@
 from rest_framework import generics, permissions
+from destination.permissions import IsUserAsOwner
 from destination.models import (
     Attraction,
     Culture,
@@ -50,11 +51,18 @@ class AttractionDetail(generics.RetrieveAPIView):
 
 
 class UserAttractionFavouriteList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserAttractionFavouriteSerializer
-    queryset = UserAttractionFavourite.objects.all()
+
+    def get_queryset(self):
+        return UserAttractionFavourite.objects.filter(user=self.request.user)
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class UserAttractionFavouriteDelete(generics.DestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated, IsUserAsOwner]
     queryset = UserAttractionFavourite.objects.all()
 
 

@@ -35,6 +35,7 @@ class AttractionSerializer(serializers.ModelSerializer):
 
 class CultureSerializer(serializers.ModelSerializer):
     gallery = GallerySerializer()
+    # zone = serializers.
 
     class Meta:
         model = Culture

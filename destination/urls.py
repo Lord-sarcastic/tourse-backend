@@ -5,19 +5,19 @@ from . import views
 app_name = 'destination'
 
 urlpatterns = [
-    path('culture/', include([
+    path('cultures/', include([
         path('', views.CultureList.as_view(), name='culture_list'),
         path('<slug:slug>/', views.CultureDetail.as_view(), name='culture_detail'),
     ])),
-    path('zone/', include([
+    path('zones/', include([
         path('', views.ZoneList.as_view(), name='zone_list'),
         path('<slug:slug>/', views.ZoneDetail.as_view(), name='zone_detail'),
     ])),
-    path('attraction/', include([
+    path('attractions/', include([
         path('', views.AttractionList.as_view(), name='attraction_list'),
         path('<slug:slug>/', views.AttractionDetail.as_view(), name='attraction_detail'),
     ])),
-    path('user_attraction_favourite/', include([
+    path('user_attraction_favourites/', include([
         path('', views.UserAttractionFavouriteList.as_view(), name='user_attraction_favourite_list'),
         path('<int:pk>/', views.UserAttractionFavouriteDelete.as_view(), name='user_attraction_favourite_delete'),
     ])),
