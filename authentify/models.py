@@ -5,4 +5,6 @@ from backend.models import TimeStampedModel
 
 
 class User(AbstractUser, TimeStampedModel):
-    pass
+    email = models.EmailField(unique=True)
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
